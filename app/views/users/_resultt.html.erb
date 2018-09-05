@@ -3,5 +3,6 @@
   <strong>Symbol: </strong> <%= @stock.ticker %>
   <strong>Name: </strong> <%= @stock.name %>
   <strong>Price: </strong> <%= @stock.last_price %>
+  <%= link_to "Add Stock", userstocks_path(user: current_user.id,stockid: @stock), method: :post, class:"btn btn-success btn-xs" %>
 </div>
 <%end%>

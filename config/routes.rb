@@ -5,4 +5,6 @@ root 'welcome#index'
 #get '/patients/:id', to: 'patients#show'
 get 'search', to: 'users#search'
 get 'search_stock', to: 'stock#search'
+ resources :userstocks
+#resources :userstocks, only: [:create]
 end

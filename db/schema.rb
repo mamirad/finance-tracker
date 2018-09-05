@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_04_091007) do
+ActiveRecord::Schema.define(version: 2018_09_05_125754) do
 
   create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "ticker"
@@ -32,4 +32,15 @@ ActiveRecord::Schema.define(version: 2018_09_04_091007) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "userstocks", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "stock_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stock_id"], name: "index_userstocks_on_stock_id"
+    t.index ["user_id"], name: "index_userstocks_on_user_id"
+  end
+
+  add_foreign_key "userstocks", "stocks"
+  add_foreign_key "userstocks", "users"
 end
