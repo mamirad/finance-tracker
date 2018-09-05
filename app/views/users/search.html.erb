@@ -1,7 +1,8 @@
 <div class="container">
+	<div id="msg"></div>
 <h1>profle</h1>
 
-<%= form_tag search_stock_path, method: :get, id: "stock-lookup-form" do %>
+<%= form_tag search_stock_path, remote: true, method: :get, id: "stock-lookup-form" do %>
 <div class="row">
 	<div class="col-md-6 col-md-offset-2">
 		<%= text_field_tag :stock, params[:stock],placeholder: "Stock ticker symbol", autofocus: true,class: "form-control search-box input-lg" %>
@@ -15,13 +16,8 @@
 
 
 <%end%>
-<%if @stock%>
-<div class="well results-block">
-  <strong>Symbol: </strong> <%= @stock.ticker %>
-  <strong>Name: </strong> <%= @stock.name %>
-  <strong>Price: </strong> <%= @stock.last_price %>
+<div id="results">
+<%#= render 'users/resultt'%>
 </div>
-<%end%>
-
 
 </div>
